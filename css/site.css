@@ -557,7 +557,7 @@ p{margin:0 0 1rem}
   .snd{display:none}
   .snd-m{display:inline-flex}
   .hero__cta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-  .hero__cta .btn{width:auto;justify-content:center;text-align:center;padding:14px 6px;font-size:14px;gap:0}
+  .hero__cta .btn{width:auto;justify-content:center;text-align:center;padding:11px 6px;font-size:14px;gap:0}
   .hero__cta .btn svg{display:none}
   .hero__cta>.btn--primary{background:transparent;border-color:#b23a4c;color:#fff}
   .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458}
