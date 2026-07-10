@@ -1,4 +1,4 @@
-/* Cafe Trotzdem - Chrome/Interaktion (Vanilla, kein Framework) */
+/* Le Chat Noir - Chrome/Interaktion (Vanilla, kein Framework) */
 (function(){
   'use strict';
   var nav = document.getElementById('nav');
