@@ -134,6 +134,33 @@
       if(e.key==='Escape') closeLb(); else if(e.key==='ArrowLeft') showLb(cur-1); else if(e.key==='ArrowRight') showLb(cur+1); });
   }
 
+  /* Galerie-Masonry: jedes Bild in die aktuell kürzeste Spalte -> ausgewogene Höhen, keine Rechts-Lücke.
+     Läuft NACH der Lightbox-Bindung (Click-Handler bleiben beim Verschieben erhalten). */
+  (function(){
+    var gal=document.querySelector('.gallery'); if(!gal) return;
+    var items=[].slice.call(gal.querySelectorAll('picture')); if(!items.length) return;
+    function colCount(){ var w=window.innerWidth; return w<=520?2:(w<=820?3:(w<=1100?4:5)); }
+    var built=-1;
+    function build(){
+      var n=colCount(), cols=[], h=[], i, j;
+      for(i=0;i<n;i++){ var d=document.createElement('div'); d.className='gallery__col'; cols.push(d); h.push(0); }
+      items.forEach(function(p){
+        var mi=0; for(j=1;j<n;j++){ if(h[j]<h[mi]) mi=j; }
+        cols[mi].appendChild(p);
+        var im=p.querySelector('img');
+        h[mi] += ((im && im.naturalWidth>0) ? (im.naturalHeight/im.naturalWidth) : 1) + 0.04;
+      });
+      gal.innerHTML='';
+      cols.forEach(function(c){ gal.appendChild(c); });
+      built=n;
+    }
+    build();
+    var pending=items.length;
+    function done(){ if(--pending<=0) build(); }
+    items.forEach(function(p){ var im=p.querySelector('img'); if(im && im.complete && im.naturalWidth) done(); else if(im){ im.addEventListener('load',done,{once:true}); im.addEventListener('error',done,{once:true}); } else done(); });
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ if(colCount()!==built) build(); }, 200); }, {passive:true});
+  })();
+
   /* Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar */
   (function(){
     var ribbon = document.querySelector('.ribbon'); if(!ribbon) return;
