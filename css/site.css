@@ -477,7 +477,8 @@ p{margin:0 0 1rem}
 .hours{display:grid;gap:0;max-width:520px}
 .hrow{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.12);font-size:15.5px;color:rgba(243,233,224,.84)}
 .hrow:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
-.hrow b{font-weight:600;color:#fff}
+.hrow b{font-weight:600;color:#fff;text-align:left}
+.hrow span{text-align:right}
 .hrow.closed{color:rgba(243,233,224,.5)}
 .hrow.today{color:#fff}
 .hrow.today b{color:var(--caramel)}
