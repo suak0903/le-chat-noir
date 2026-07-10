@@ -167,13 +167,16 @@
     if(mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
   })();
 
-  /* Hero-Video: Ton-Schalter (Autoplay ist stumm; ein Klick aktiviert den Ton) */
+  /* Hero-Video: Ton-Schalter (Autoplay ist stumm; ein Klick aktiviert den Ton).
+     Zwei Buttons teilen sich denselben Schalter: Overlay im Video (Desktop) + CTA-Button (Mobil). */
   (function(){
-    var v=document.getElementById('heroVid'), b=document.getElementById('sndBtn'); if(!v||!b) return;
+    var v=document.getElementById('heroVid');
+    var btns=[].slice.call(document.querySelectorAll('.snd, .snd-m'));
+    if(!v || !btns.length) return;
     var onSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.7 6a8 8 0 0 1 0 12"/></svg>';
     var offSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16.5 9 5 6M21.5 9l-5 6"/></svg>';
-    function render(){ b.innerHTML=(v.muted?offSvg+'<span>Ton an</span>':onSvg+'<span>Ton aus</span>'); b.setAttribute('aria-label', v.muted?'Ton einschalten':'Ton ausschalten'); }
+    function render(){ btns.forEach(function(b){ b.innerHTML=(v.muted?offSvg+'<span>Ton an</span>':onSvg+'<span>Ton aus</span>'); b.setAttribute('aria-label', v.muted?'Ton einschalten':'Ton ausschalten'); }); }
     render();
-    b.addEventListener('click', function(){ v.muted=!v.muted; if(!v.muted){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); } render(); });
+    btns.forEach(function(b){ b.addEventListener('click', function(){ v.muted=!v.muted; if(!v.muted){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); } render(); }); });
   })();
 })();

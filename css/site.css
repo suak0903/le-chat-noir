@@ -433,6 +433,7 @@ p{margin:0 0 1rem}
   padding:8px 13px;cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease)}
 .snd:hover{background:rgba(143,38,55,.85);border-color:#fff}
 .snd svg{width:15px;height:15px;flex:none}
+.snd-m{display:none}
 @media(max-width:1023px){
   .hero__grid{grid-template-columns:1fr;gap:28px}
   .hero__video{justify-self:center;max-width:300px;margin-top:4px}
@@ -551,7 +552,12 @@ p{margin:0 0 1rem}
   .hero__video::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(180deg,rgba(18,13,11,.48) 0%,rgba(20,15,12,.30) 36%,rgba(18,13,11,.95) 100%)}
   .hero__video figcaption{display:none}
-  .snd{z-index:4;top:calc(var(--nav-h) + 8px);right:14px;bottom:auto}
+  .snd{display:none}
+  .snd-m{display:inline-flex}
+  .hero__cta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hero__cta>.btn--primary{grid-column:1 / -1;background:transparent;border-color:#b23a4c;color:#fff}
+  .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458}
+  .hero__cta .btn{width:auto}
   .ribbon{margin-top:26px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.hero__video{transform:none!important}}
