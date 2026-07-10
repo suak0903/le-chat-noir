@@ -580,9 +580,10 @@ p{margin:0 0 1rem}
 /* Messing-Hervorhebung von Schlüsselwörtern in Überschriften (Cormorant-Kursive) */
 h1 em,h2 em,h3 em,.lead em,.menu__aside h3 em{font-style:italic;color:var(--caramel)}
 
-/* Ambiente-Tags mobil: erster voll, Rest zwei gleich breit, viewport-füllend */
-@media(max-width:700px){
-  .tags{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .tags .tag{text-align:center;padding:12px 10px}
-  .tags .tag:first-child{grid-column:1 / -1}
-}
+/* Ambiente-Tags (Desktop + Mobil): erster voll, Rest zwei gleich breit; Schlüsselwörter Messing */
+.tags{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tags .tag{text-align:center;padding:13px 12px}
+.tags .tag:first-child{grid-column:1 / -1}
+.tag em{color:var(--caramel);font-style:normal;font-weight:600}
+.br-mob{display:none}
+@media(max-width:700px){.br-mob{display:inline}}
