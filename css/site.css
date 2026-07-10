@@ -98,7 +98,7 @@ p{margin:0 0 1rem}
 /* ---- Mobile menu: Vollglas-Panel von rechts, Header weg, Logo+X im Panel ---- */
 .mmenu{position:fixed;inset:0;z-index:130;
   background:rgba(23,18,15,.88);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);
-  display:flex;flex-direction:column;padding:calc(var(--nav-h) + 4px) 28px 18px;
+  display:flex;flex-direction:column;justify-content:center;padding:calc(var(--nav-h) + 10px) 28px 24px;
   transform:translateX(100%);transition:transform .42s var(--ease);
   height:100lvh;overflow-y:auto;overscroll-behavior:contain}
 .mmenu.open{transform:translateX(0)}
@@ -111,9 +111,9 @@ p{margin:0 0 1rem}
 .mmenu__x::after{transform:rotate(-45deg)}
 .mmenu__x:hover{transform:rotate(90deg)}
 .mmenu__x:hover::before,.mmenu__x:hover::after{background:var(--mocha)}
-.mmenu__links{display:flex;flex-direction:column;flex:1;justify-content:flex-start;padding:6px 0}
-.mmenu__links a{position:relative;display:flex;align-items:baseline;gap:14px;font-family:'Cormorant';font-size:clamp(20px,5.2vw,25px);color:rgba(255,255,255,.9);
-  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);
+.mmenu__links{display:flex;flex-direction:column;flex:none;padding:0}
+.mmenu__links a{position:relative;display:flex;align-items:baseline;gap:14px;font-family:'Cormorant';font-size:clamp(22px,5.8vw,27px);color:rgba(255,255,255,.9);
+  padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);
   transition:color .25s var(--ease),padding-left .25s var(--ease)}
 .mmenu__links a .n{font-family:'Inter';font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--caramel);flex:none;transform:translateY(-5px);transition:color .25s var(--ease)}
 .mmenu__links a:hover,.mmenu__links a:focus-visible,.mmenu__links a.active{color:#fff;padding-left:12px}
@@ -127,7 +127,7 @@ p{margin:0 0 1rem}
 .mmenu.open .mmenu__links a:nth-child(5){animation-delay:.34s}
 .mmenu.open .mmenu__links a:nth-child(6){animation-delay:.40s}
 @keyframes mIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
-.mmenu__foot{flex:none;padding-top:16px;border-top:1px solid rgba(255,255,255,.12)}
+.mmenu__foot{flex:none;margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
 .mmenu__foot .btn{width:100%;justify-content:center}
 .mmenu__contact{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}  /* symmetrisch, gleiche Breite, fuellt wie der CTA darueber */
 .mmenu__contact a{display:inline-flex;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.85);font-size:14px;font-weight:500;
