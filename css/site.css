@@ -559,8 +559,8 @@ p{margin:0 0 1rem}
   .hero__cta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
   .hero__cta .btn{width:auto;justify-content:center;text-align:center;padding:11px 6px;font-size:14px;gap:0}
   .hero__cta .btn svg{display:none}
-  .hero__cta>.btn--primary{background:transparent;border-color:#b23a4c;color:var(--caramel)}
-  .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458;color:#d9bd7e}
+  .hero__cta>.btn--primary{background:transparent;border-color:var(--caramel);color:var(--caramel)}
+  .hero__cta>.btn--primary:hover{background:rgba(198,163,92,.16);border-color:#d9bd7e;color:#e2c98c}
   .ribbon{margin-top:26px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.hero__video{transform:none!important}}
