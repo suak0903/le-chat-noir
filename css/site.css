@@ -559,8 +559,8 @@ p{margin:0 0 1rem}
   .hero__cta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
   .hero__cta .btn{width:auto;justify-content:center;text-align:center;padding:11px 6px;font-size:14px;gap:0}
   .hero__cta .btn svg{display:none}
-  .hero__cta>.btn--primary{background:transparent;border-color:#b23a4c;color:#c94d61}
-  .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458;color:#d8697b}
+  .hero__cta>.btn--primary{background:transparent;border-color:#b23a4c;color:var(--caramel)}
+  .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458;color:#d9bd7e}
   .ribbon{margin-top:26px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.hero__video{transform:none!important}}
@@ -575,4 +575,14 @@ p{margin:0 0 1rem}
   .split--gh .gh-head{grid-column:1;grid-row:auto;order:1;padding-bottom:0}
   .split--gh .gh-media{grid-column:1;grid-row:auto;order:2;aspect-ratio:16/10;margin:16px 0 26px}
   .split--gh .gh-body{grid-column:1;grid-row:auto;order:3}
+}
+
+/* Messing-Hervorhebung von Schlüsselwörtern in Überschriften (Cormorant-Kursive) */
+h1 em,h2 em,h3 em,.lead em,.menu__aside h3 em{font-style:italic;color:var(--caramel)}
+
+/* Ambiente-Tags mobil: erster voll, Rest zwei gleich breit, viewport-füllend */
+@media(max-width:700px){
+  .tags{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tags .tag{text-align:center;padding:12px 10px}
+  .tags .tag:first-child{grid-column:1 / -1}
 }
