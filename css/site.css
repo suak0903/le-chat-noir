@@ -489,7 +489,7 @@ p{margin:0 0 1rem}
 .split__media--contain img{width:auto;max-width:74%;max-height:74%}
 
 /* ===== Nav-Logo-Marke (hell auf Hero, dunkel auf hellem Header) ===== */
-.brand__mark{height:27px;width:auto;display:block;flex:none}
+.brand__mark{height:46px;width:auto;display:block;flex:none;transform:translateY(-3px)}
 .brand__mark--dark{display:none}
 .nav.scrolled .brand__mark--light,body.sub .nav.scrolled .brand__mark--light{display:none}
 .nav.scrolled .brand__mark--dark,body.sub .nav.scrolled .brand__mark--dark{display:block}
@@ -537,15 +537,17 @@ p{margin:0 0 1rem}
 
 /* ===== Wortmarke + Hero-Name im Serif des Logos (Cormorant) ===== */
 .brand b{font-weight:600;letter-spacing:.005em}
+.brand b em{font-style:italic;color:var(--caramel)}
 .hero h1{font-weight:600}
 
 /* ===== Mobil: Video wird der Hero-Hintergrund (Parallaxe), Text als Overlay ===== */
 @media(max-width:700px){
-  .hero{align-items:stretch}
+  .hero{display:block}
   .hero__bg{display:none}
-  .hero .wrap{display:flex;align-items:flex-end;min-height:100svh;padding-top:var(--nav-h);padding-bottom:28px}
+  .hero .wrap{padding-top:calc(var(--nav-h) + 30px);padding-bottom:28px}
   .hero__grid{display:block;width:100%}
-  .hero__inner{position:relative;z-index:2}
+  .hero__inner{position:relative;z-index:2;display:flex;flex-direction:column;min-height:calc(100svh - var(--nav-h) - 62px)}
+  .hero__sub{margin-top:auto}
   .hero__video{position:absolute;top:-7%;left:0;right:0;height:114%;width:100%;max-width:none;aspect-ratio:auto;
     margin:0;border:0;box-shadow:none;z-index:0;justify-self:auto;will-change:transform}
   .hero__video video{width:100%;height:100%;object-fit:cover}
@@ -554,10 +556,23 @@ p{margin:0 0 1rem}
   .hero__video figcaption{display:none}
   .snd{display:none}
   .snd-m{display:inline-flex}
-  .hero__cta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .hero__cta>.btn--primary{grid-column:1 / -1;background:transparent;border-color:#b23a4c;color:#fff}
+  .hero__cta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .hero__cta .btn{width:auto;justify-content:center;text-align:center;padding:14px 6px;font-size:14px;gap:0}
+  .hero__cta .btn svg{display:none}
+  .hero__cta>.btn--primary{background:transparent;border-color:#b23a4c;color:#fff}
   .hero__cta>.btn--primary:hover{background:rgba(143,38,55,.16);border-color:#c04458}
-  .hero__cta .btn{width:auto}
   .ribbon{margin-top:26px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.hero__video{transform:none!important}}
+
+/* ===== Gastgeber-Split: Desktop Bild|Text, Mobil Überschrift ÜBER dem Bild ===== */
+.split--gh{grid-template-columns:1.05fr .95fr;column-gap:60px;row-gap:0;align-items:center}
+.split--gh .gh-media{grid-column:1;grid-row:1 / span 2;aspect-ratio:4/5;align-self:stretch;order:0}
+.split--gh .gh-head{grid-column:2;grid-row:1;align-self:end;padding-bottom:16px}
+.split--gh .gh-body{grid-column:2;grid-row:2;align-self:start}
+@media(max-width:1023px){
+  .split--gh{grid-template-columns:1fr;column-gap:0}
+  .split--gh .gh-head{grid-column:1;grid-row:auto;order:1;padding-bottom:0}
+  .split--gh .gh-media{grid-column:1;grid-row:auto;order:2;aspect-ratio:16/10;margin:16px 0 26px}
+  .split--gh .gh-body{grid-column:1;grid-row:auto;order:3}
+}
