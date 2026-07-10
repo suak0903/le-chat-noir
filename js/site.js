@@ -5,8 +5,8 @@
   var isSub = document.body.classList.contains('sub');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Nav: transparent -> solid ab Scroll (nur auf Seiten mit Hero) */
-  function onScroll(){ if(nav && !isSub) nav.classList.toggle('scrolled', window.scrollY > 30); }
+  /* Nav: transparent -> solid ab Scroll (auch auf Unterseiten mit dunklem Subhero) */
+  function onScroll(){ if(nav) nav.classList.toggle('scrolled', window.scrollY > 30); }
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 
   /* ---- Mobile-Menue: Vollglas-Panel, Header blendet aus, Logo+X im Panel ---- */
@@ -24,7 +24,8 @@
   function openMenu(){ mmenu.classList.add('open'); nav.classList.add('menu-open'); mmenu.removeAttribute('inert'); burger.setAttribute('aria-expanded','true'); lockScroll(); }
   function closeMenu(){ mmenu.classList.remove('open'); nav.classList.remove('menu-open'); mmenu.setAttribute('inert',''); burger.setAttribute('aria-expanded','false'); unlockScroll(); }
 
-  if(burger){ burger.addEventListener('click', openMenu); }
+  function toggleMenu(){ (mmenu && mmenu.classList.contains('open')) ? closeMenu() : openMenu(); }
+  if(burger){ burger.addEventListener('click', toggleMenu); }
   if(mclose){ mclose.addEventListener('click', closeMenu); }
   if(mmenu){ mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); }); }
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && mmenu && mmenu.classList.contains('open')) closeMenu(); });
@@ -67,10 +68,16 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* Hero-Parallax 50% (Desktop + Mobil, rAF-gedrosselt, GPU-Compositing) */
-  var heroBg = document.getElementById('heroBg'), ticking=false;
-  if(heroBg && !reduce){
-    var park = function(){ heroBg.style.transform = 'translate3d(0,' + (window.scrollY*0.5) + 'px,0)'; ticking=false; };
+  /* Hero-Parallax (Desktop: Foto-Hintergrund; Mobil: Video-Hintergrund), rAF-gedrosselt */
+  var heroBg = document.getElementById('heroBg'), heroVidFig = document.querySelector('.hero__video'),
+      mqMob = window.matchMedia('(max-width:700px)'), ticking=false;
+  if((heroBg || heroVidFig) && !reduce){
+    var park = function(){
+      var y = window.scrollY;
+      if(heroBg) heroBg.style.transform = 'translate3d(0,' + (y*0.5) + 'px,0)';
+      if(heroVidFig) heroVidFig.style.transform = mqMob.matches ? 'translate3d(0,' + (y*0.28) + 'px,0)' : '';
+      ticking=false;
+    };
     window.addEventListener('scroll', function(){ if(ticking) return; ticking=true; requestAnimationFrame(park); }, {passive:true});
     park();
   }
@@ -80,17 +87,33 @@
   var demobar = document.getElementById('demobar'), dclose = document.getElementById('demoClose');
   if(dclose){ dclose.addEventListener('click', function(){ demobar.classList.add('hide'); }); }
 
+  /* Hinweise: zurueck-nach-oben-Button (erscheint ab ~600px) */
+  var tocTop = document.getElementById('tocTop');
+  if(tocTop){
+    window.addEventListener('scroll', function(){ tocTop.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+    tocTop.addEventListener('click', function(){ window.scrollTo({ top:0, behavior: reduce?'auto':'smooth' }); });
+  }
+
   /* Scrollspy: aktive Sektion im Menue unterstreichen */
+  /* Scrollspy: aktive Sektion unterstreichen. Sichtbarkeits-Set statt "nur beim Reinscrollen
+     setzen" - ganz oben (nichts im Leseband) wird ALLES geleert, kein haengender Marker. */
   var spyLinks = [].slice.call(document.querySelectorAll('.nav__links a[href*="#"]'));
-  var spyMap = {};
-  spyLinks.forEach(function(a){ var h=a.hash; if(h && h.length>1){ var s=document.querySelector(h); if(s) spyMap[h.slice(1)]=a; } });
-  if('IntersectionObserver' in window && Object.keys(spyMap).length){
+  var spyIds = [];
+  spyLinks.forEach(function(a){ var h=a.hash; if(h && h.length>1 && document.getElementById(h.slice(1))) spyIds.push(h.slice(1)); });
+  if('IntersectionObserver' in window && spyIds.length){
+    var vis = {};
     var spyIo = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ spyLinks.forEach(function(a){ a.classList.remove('active'); }); var a=spyMap[en.target.id]; if(a) a.classList.add('active'); }
-      });
+      entries.forEach(function(en){ if(en.isIntersecting) vis[en.target.id]=true; else delete vis[en.target.id]; });
+      spyLinks.forEach(function(a){ a.classList.remove('active'); });
+      for(var i=0;i<spyIds.length;i++){
+        if(vis[spyIds[i]]){
+          var lnk = spyLinks.filter(function(a){ return a.hash === '#'+spyIds[i]; })[0];
+          if(lnk) lnk.classList.add('active');
+          break;
+        }
+      }
     }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
-    Object.keys(spyMap).forEach(function(id){ var s=document.getElementById(id); if(s) spyIo.observe(s); });
+    spyIds.forEach(function(id){ spyIo.observe(document.getElementById(id)); });
   }
 
   /* Lightbox fuer die Galerie */

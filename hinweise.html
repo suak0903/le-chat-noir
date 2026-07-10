@@ -8,7 +8,7 @@
 <meta name="description" content="Redesign-Entwurf für Le Chat Noir in Essen-Rüttenscheid: was eine eigene Website gegenüber dem reinen Facebook-Auftritt besser macht, wie er entstand und warum sich die Zusammenarbeit lohnt.">
 <link rel="icon" href="media/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="media/favicon-180.png">
-<link rel="stylesheet" href="css/site.css?v=1">
+<link rel="stylesheet" href="css/site.css?v=2">
 </head>
 <body class="sub">
 <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -16,7 +16,11 @@
 <!-- #chrome:header -->
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="index.html#top" class="brand" aria-label="Le Chat Noir Startseite"><b>Le Chat Noir</b></a>
+    <a href="index.html#top" class="brand" aria-label="Le Chat Noir Startseite">
+      <img class="brand__mark brand__mark--light" src="media/mark-cream.png" alt="" width="45" height="27">
+      <img class="brand__mark brand__mark--dark" src="media/mark-dark.png" alt="" width="45" height="27">
+      <b>Le Chat Noir</b>
+    </a>
     <nav class="nav__links" aria-label="Hauptnavigation">
       <a href="index.html#gastgeber">Gastgeber</a>
       <a href="index.html#ambiente">Ambiente</a>
@@ -29,10 +33,6 @@
   </div>
 </header>
 <nav class="mmenu" id="mmenu" aria-label="Mobile Navigation" inert>
-  <div class="mmenu__top">
-    <a href="index.html#top" class="mmenu__logo" aria-label="Le Chat Noir Startseite"><b>Le Chat Noir</b></a>
-    <button class="mmenu__x" id="mclose" aria-label="Menü schließen"></button>
-  </div>
   <div class="mmenu__links">
     <a href="index.html#gastgeber"><span class="n">01</span>Gastgeber</a>
     <a href="index.html#ambiente"><span class="n">02</span>Ambiente</a>
@@ -45,7 +45,7 @@
     <a class="btn btn--primary" href="tel:+49201792951">Tisch reservieren
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5c0 8 7 15 15 15v-3.5l-4-1.5-2 2a12 12 0 0 1-6-6l2-2L7.5 5H4Z"/></svg></a>
     <div class="mmenu__contact">
-      <a href="tel:+49201792951"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0 8 7 15 15 15v-3.5l-4-1.5-2 2a12 12 0 0 1-6-6l2-2L7.5 5H4Z"/></svg>0201 792951</a>
+      <a href="https://www.facebook.com/profile.php?id=100066723883240&amp;locale=de_DE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>Facebook</a>
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Chat%20Noir%20Brigittastra%C3%9Fe%2022%20Essen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.7-7-11a7 7 0 1 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Route</a>
     </div>
     <div class="mmenu__meta">Brigittastraße 22 &middot; Essen-Rüttenscheid</div>
@@ -59,10 +59,18 @@
     <div class="eyebrow" style="margin-top:20px">Redesign-Demonstrator</div>
     <h1>Über diesen Entwurf<span class="dot">.</span></h1>
     <p>Was Sie hier sehen, warum eine eigene Website mehr kann als der reine Facebook-Auftritt, was für den Live-Betrieb noch offen wäre und warum sich die Zusammenarbeit lohnt.</p>
+    <div class="toc">
+      <a href="#neu"><span class="num">01</span>Neu gebaut</a>
+      <a href="#design"><span class="num">02</span>Design</a>
+      <a href="#skala"><span class="num">03</span>Ausbau-Skala</a>
+      <a href="#vergleich"><span class="num">04</span>Vergleich</a>
+      <a href="#warum"><span class="num">05</span>Warum ich</a>
+      <a href="#referenzen"><span class="num">06</span>Referenzen</a>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="neu">
   <div class="wrap">
     <div class="note-box" style="margin-bottom:52px">
       <b>Bitte beachten.</b> Diese Seite ist ein unverbindlicher Entwurf und nicht öffentlich auffindbar (für Suchmaschinen gesperrt). Sie wurde ausschließlich aus öffentlich verfügbaren Inhalten und Fotos (Facebook, Google, Bewertungsportale) zusammengestellt, steht in keiner Verbindung zum offiziellen Auftritt des Le Chat Noir und konkurriert nicht mit dem Original. Auf Wunsch wird sie jederzeit vollständig entfernt.
@@ -127,7 +135,34 @@
   </div>
 </section>
 
-<section class="section section--latte">
+<section class="section section--latte" id="design">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Das Design</div>
+      <h2>Farben und Schrift.</h2>
+      <p>Eine ruhige Palette und eine französisch-elegante Schrift, die zur Weinstube passt. Keine Baukasten-Optik, sondern ein eigenes Bild.</p>
+    </div>
+    <div class="ds reveal">
+      <div>
+        <div class="ds__sw">
+          <div class="ds__c"><div class="ds__chip" style="background:#17120f"></div><span class="hex">#17120F</span><span class="nm">Noir (Grund)</span></div>
+          <div class="ds__c"><div class="ds__chip" style="background:#8f2637"></div><span class="hex">#8F2637</span><span class="nm">Bordeaux (Akzent)</span></div>
+          <div class="ds__c"><div class="ds__chip" style="background:#c6a35c"></div><span class="hex">#C6A35C</span><span class="nm">Messing-Gold</span></div>
+          <div class="ds__c"><div class="ds__chip" style="background:#f6f0e4"></div><span class="hex">#F6F0E4</span><span class="nm">Pergament</span></div>
+        </div>
+      </div>
+      <div class="ds__type">
+        <div class="big">Le Chat <em>Noir.</em></div>
+        <div class="cap">Cormorant — Titel &amp; Name</div>
+        <p>Ein feiner französischer Serif (mit den kleinen Häkchen an den Buchstaben), der den Schriftzug aus Ihrem Logo aufnimmt, elegant wie eine Pariser Weinkarte.</p>
+        <div class="cap" style="margin-top:18px">Inter — Fließtext</div>
+        <p style="font-family:'Inter'">Klar und gut lesbar für alles Übrige, auf jedem Bildschirm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vergleich">
   <div class="wrap">
     <div class="shead reveal">
       <div class="eyebrow">Der Vergleich</div>
@@ -174,7 +209,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section--latte" id="warum">
   <div class="wrap">
     <div class="shead reveal">
       <div class="eyebrow">Warum gerade ich</div>
@@ -206,12 +241,12 @@
   </div>
 </section>
 
-<section class="section section--latte">
+<section class="section" id="referenzen">
   <div class="wrap">
     <div class="shead reveal">
       <div class="eyebrow">Referenzen</div>
       <h2>Kein Einzelfall.</h2>
-      <p>Von der eigenen Website über ein Pilates-Studio, ein Hightech-Unternehmen und einen Handwerksbetrieb bis zum Steuerberater, alle mit KI-Unterstützung gebaut.</p>
+      <p>Von der eigenen Website über ein Pilates-Studio, ein Hightech-Unternehmen und einen Handwerksbetrieb bis zum Steuerberater, Karriere-Coach und Restaurant, alle mit KI-Unterstützung gebaut.</p>
     </div>
     <div class="refs">
       <div class="ref">
@@ -267,6 +302,22 @@
           <a href="https://suak0903.github.io/steuerberatung-muyres/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
         </div>
       </div>
+      <div class="ref">
+        <img class="ref__shot" src="media/refs/bernd.webp" alt="Startseite des Dr.-Bernd-Slaghuis-Entwurfs" width="640" height="400" loading="lazy" decoding="async">
+        <div class="ref__body">
+          <h4>Dr. Bernd Slaghuis</h4>
+          <p>Karriere- und Business-Coaching in Köln, Redesign-Entwurf.</p>
+          <a href="https://suak0903.github.io/bernd-slaghuis/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </div>
+      <div class="ref">
+        <img class="ref__shot" src="media/refs/cafetrotzdem.webp" alt="Startseite des Café-Trotzdem-Entwurfs" width="640" height="400" loading="lazy" decoding="async">
+        <div class="ref__body">
+          <h4>Café Trotzdem</h4>
+          <p>Türkische und internationale Küche in Mönchengladbach, Redesign-Entwurf.</p>
+          <a href="https://suak0903.github.io/cafe-trotzdem/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </div>
     </div>
     <div class="note-box" style="margin-top:44px">
       <b>Was ist das hier?</b> Ein unverbindlicher Redesign-Entwurf für das Le Chat Noir, erstellt von Dr.-Ing. Suat Akyol. Inhalte und Bilder stammen aus öffentlich verfügbaren Quellen (Facebook, Google). Gezeigt wird, wie ein eigener, moderner und besser auffindbarer Auftritt aussehen kann. Anmerkungen gern an <a href="mailto:contact@akyol.de" style="color:var(--mocha);font-weight:600">contact@akyol.de</a>.
@@ -296,6 +347,10 @@
 </footer>
 <!-- /#chrome:footer -->
 
-<script src="js/site.js?v=1" defer></script>
+<button class="toc-top" id="tocTop" type="button" aria-label="Nach oben">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="js/site.js?v=2" defer></script>
 </body>
 </html>

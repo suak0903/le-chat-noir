@@ -7,7 +7,7 @@
 <title>Datenschutz | Le Chat Noir</title>
 <link rel="icon" href="media/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="media/favicon-180.png">
-<link rel="stylesheet" href="css/site.css?v=1">
+<link rel="stylesheet" href="css/site.css?v=2">
 </head>
 <body class="sub">
 <a href="#main" class="skip">Zum Inhalt springen</a>
@@ -15,7 +15,11 @@
 <!-- #chrome:header -->
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="index.html#top" class="brand" aria-label="Le Chat Noir Startseite"><b>Le Chat Noir</b></a>
+    <a href="index.html#top" class="brand" aria-label="Le Chat Noir Startseite">
+      <img class="brand__mark brand__mark--light" src="media/mark-cream.png" alt="" width="45" height="27">
+      <img class="brand__mark brand__mark--dark" src="media/mark-dark.png" alt="" width="45" height="27">
+      <b>Le Chat Noir</b>
+    </a>
     <nav class="nav__links" aria-label="Hauptnavigation">
       <a href="index.html#gastgeber">Gastgeber</a>
       <a href="index.html#ambiente">Ambiente</a>
@@ -28,10 +32,6 @@
   </div>
 </header>
 <nav class="mmenu" id="mmenu" aria-label="Mobile Navigation" inert>
-  <div class="mmenu__top">
-    <a href="index.html#top" class="mmenu__logo" aria-label="Le Chat Noir Startseite"><b>Le Chat Noir</b></a>
-    <button class="mmenu__x" id="mclose" aria-label="Menü schließen"></button>
-  </div>
   <div class="mmenu__links">
     <a href="index.html#gastgeber"><span class="n">01</span>Gastgeber</a>
     <a href="index.html#ambiente"><span class="n">02</span>Ambiente</a>
@@ -44,7 +44,7 @@
     <a class="btn btn--primary" href="tel:+49201792951">Tisch reservieren
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5c0 8 7 15 15 15v-3.5l-4-1.5-2 2a12 12 0 0 1-6-6l2-2L7.5 5H4Z"/></svg></a>
     <div class="mmenu__contact">
-      <a href="tel:+49201792951"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0 8 7 15 15 15v-3.5l-4-1.5-2 2a12 12 0 0 1-6-6l2-2L7.5 5H4Z"/></svg>0201 792951</a>
+      <a href="https://www.facebook.com/profile.php?id=100066723883240&amp;locale=de_DE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>Facebook</a>
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Chat%20Noir%20Brigittastra%C3%9Fe%2022%20Essen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.7-7-11a7 7 0 1 1 14 0c0 5.3-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Route</a>
     </div>
     <div class="mmenu__meta">Brigittastraße 22 &middot; Essen-Rüttenscheid</div>
@@ -85,7 +85,7 @@
 
 <!-- #chrome:demobar -->
 <div class="demobar" id="demobar">
-  <span>Relaunch-Entwurf, kein offizieller Auftritt von <b>Le Chat Noir</b>. <a href="hinweise.html">Was ist besser?</a> <span class="demobar__sep">&middot;</span> <a href="https://www.facebook.com/profile.php?id=100066723883240&amp;locale=de_DE" target="_blank" rel="noopener">Original (Facebook)</a></span>
+  <span>Relaunch-Entwurf, kein offizieller Auftritt von <b>Le Chat Noir</b>. <a href="hinweise.html">Was ist anders?</a> <span class="demobar__sep">&middot;</span> <a href="https://www.facebook.com/profile.php?id=100066723883240&amp;locale=de_DE" target="_blank" rel="noopener">Original (Facebook)</a></span>
   <button id="demoClose" aria-label="Hinweis schließen">&times;</button>
 </div>
 <!-- /#chrome:demobar -->
@@ -111,6 +111,6 @@
 </footer>
 <!-- /#chrome:footer -->
 
-<script src="js/site.js?v=1" defer></script>
+<script src="js/site.js?v=2" defer></script>
 </body>
 </html>
