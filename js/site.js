@@ -141,15 +141,26 @@
     var items=[].slice.call(gal.querySelectorAll('picture')); if(!items.length) return;
     function colCount(){ var w=window.innerWidth; return w<=520?2:(w<=820?3:(w<=1100?4:5)); }
     var built=-1;
+    function ratio(p){ var im=p.querySelector('img'); return (im && im.naturalWidth>0) ? (im.naturalHeight/im.naturalWidth) : 1; }
     function build(){
       var n=colCount(), cols=[], h=[], i, j;
       for(i=0;i<n;i++){ var d=document.createElement('div'); d.className='gallery__col'; cols.push(d); h.push(0); }
-      items.forEach(function(p){
-        var mi=0; for(j=1;j<n;j++){ if(h[j]<h[mi]) mi=j; }
-        cols[mi].appendChild(p);
-        var im=p.querySelector('img');
-        h[mi] += ((im && im.naturalWidth>0) ? (im.naturalHeight/im.naturalWidth) : 1) + 0.04;
-      });
+      /* LPT: hoechste Bilder zuerst in die jeweils kuerzeste Spalte */
+      var order=items.slice().sort(function(a,b){ return ratio(b)-ratio(a); });
+      order.forEach(function(p){ var mi=0; for(j=1;j<n;j++){ if(h[j]<h[mi]) mi=j; } cols[mi].appendChild(p); h[mi]+=ratio(p)+0.05; });
+      /* Feinabgleich: beste Verschiebung ODER Tausch zwischen hoechster und niedrigster Spalte, bis Spanne klein (~5%) */
+      function simSpread(mx,mn,nx,nn){ var a=-1e9,b=1e9,k,v; for(k=0;k<n;k++){ v=(k===mx)?nx:(k===mn)?nn:h[k]; if(v>a)a=v; if(v<b)b=v; } return a-b; }
+      for(var pass=0; pass<300; pass++){
+        var mx=0, mn=0; for(j=1;j<n;j++){ if(h[j]>h[mx]) mx=j; if(h[j]<h[mn]) mn=j; }
+        var spread=h[mx]-h[mn]; if(spread<=0.30) break;
+        var kx=[].slice.call(cols[mx].children), kn=[].slice.call(cols[mn].children);
+        var best=null, ai, bi, a, b, ra, rb, d, ns;
+        for(ai=0; ai<kx.length; ai++){ a=kx[ai]; ra=ratio(a); ns=simSpread(mx,mn,h[mx]-(ra+0.05),h[mn]+(ra+0.05)); if(ns<spread-1e-6 && (!best||ns<best.ns)) best={t:1,a:a,ns:ns}; }
+        for(ai=0; ai<kx.length; ai++){ a=kx[ai]; ra=ratio(a); for(bi=0; bi<kn.length; bi++){ b=kn[bi]; rb=ratio(b); if(ra<=rb) continue; d=ra-rb; ns=simSpread(mx,mn,h[mx]-d,h[mn]+d); if(ns<spread-1e-6 && (!best||ns<best.ns)) best={t:2,a:a,b:b,ns:ns}; } }
+        if(!best) break;
+        if(best.t===1){ ra=ratio(best.a); cols[mn].appendChild(best.a); h[mx]-=(ra+0.05); h[mn]+=(ra+0.05); }
+        else { d=ratio(best.a)-ratio(best.b); cols[mn].appendChild(best.a); cols[mx].appendChild(best.b); h[mx]-=d; h[mn]+=d; }
+      }
       gal.innerHTML='';
       cols.forEach(function(c){ gal.appendChild(c); });
       built=n;
